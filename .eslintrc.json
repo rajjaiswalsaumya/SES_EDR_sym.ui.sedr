@@ -1,23 +1,33 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["src/**/*.spec.ts", "src/**/*.d.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
-        ],
+        "project": "./src/tsconfig.spec.json"
+      },
+      // Jasmine rules
+      "extends": ["plugin:jasmine/recommended"],
+      // Plugin to run Jasmine rules
+      "plugins": ["jasmine"],
+      "env": { "jasmine": true },
+      // Turn off 'no-unused-vars' rule
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    },
+    {
+      "files": ["*.component.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/recommended",
+        "airbnb-typescript/base",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
@@ -40,13 +50,45 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "createDefaultProgram": true
+      },
       "extends": [
-        "plugin:@angular-eslint/template/recommended"
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/recommended",
+        "airbnb-typescript/base",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
       ],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "sedr-app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "sedrApp",
+            "style": "camelCase"
+          }
+        ],
+        "import/prefer-default-export": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "max-len": ["error", { "code": 140 }]
+      }
     }
   ]
 }

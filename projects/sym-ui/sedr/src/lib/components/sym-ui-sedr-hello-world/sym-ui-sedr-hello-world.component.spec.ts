@@ -8,9 +8,8 @@ describe('SymUiSedrHelloWorldComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SymUiSedrHelloWorldComponent ]
-    })
-    .compileComponents();
+      declarations: [SymUiSedrHelloWorldComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
