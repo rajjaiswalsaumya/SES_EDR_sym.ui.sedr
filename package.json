@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:lib": "ng build @sym-ui/sedr",
+    "build:app": "ng build @sym-ui/sedr-app",
+    "build": "npm run build:lib && npm run build:app",
     "test": "ng test",
     "test:nowatch": "ng test --no-watch",
     "coverage": "ng test --no-watch --code-coverage",
@@ -39,6 +41,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-packagr": "^11.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",

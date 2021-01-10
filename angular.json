@@ -125,6 +125,46 @@
           }
         }
       }
+    },
+    "@sym-ui/sedr": {
+      "projectType": "library",
+      "root": "projects/sym-ui/sedr",
+      "sourceRoot": "projects/sym-ui/sedr/src",
+      "prefix": "sym-ui-sedr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/sym-ui/sedr/tsconfig.lib.json",
+            "project": "projects/sym-ui/sedr/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sym-ui/sedr/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sym-ui/sedr/src/test.ts",
+            "tsConfig": "projects/sym-ui/sedr/tsconfig.spec.json",
+            "karmaConfig": "projects/sym-ui/sedr/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sym-ui/sedr/tsconfig.lib.json",
+              "projects/sym-ui/sedr/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "@sym-ui/sedr-app"
